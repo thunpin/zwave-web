@@ -26,8 +26,21 @@ module.exports = function(app) {
     app.use(bodyParser.json()); // support json encoded bodies
     app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+    app.get('/', function(req, res) {
+        var result = '/reset <br>';
+        result += '/nodes <br>';
+        result += '/nodes/length <br>';
+        result += '/node/:nodeid <br>';
+        result += '/node/:nodeid/status <br>';
+        result += '/node/:nodeid/status/:status <br>';
+        result += '/node/:nodeid/status/:status/:index <br>';
+        result += '/node/:nodeid/rename/:name <br>';
+        result += '/node/:nodeid/command/:command/:index/:instance/:value <br>';
+        res.send(result);
+    });
+
     app.get('/reset', function(req, res) {
-        
+        nodes = []
     });
 
     app.get('/nodes', function(req, res) {
