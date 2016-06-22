@@ -1,0 +1,25 @@
+{
+  "name": "zwave-web",
+  "version": "0.0.1",
+  "description": "zwave web control",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thunpin/zwave-web.git"
+  },
+  "author": "thunpin@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thunpin/zwave-web/issues"
+  },
+  "homepage": "https://github.com/thunpin/zwave-web#readme",
+
+  "dependencies": {
+    "express": "~4.14.0",
+    "mongoose": "~4.5.1",
+    "body-parser": ""
+  }
+}
