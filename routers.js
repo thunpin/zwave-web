@@ -46,9 +46,7 @@ module.exports = function(app) {
         res.send(result);
     });
 
-    // to implements
     app.get('/reset', function(req, res) {
-        
     });
 
     // list all nodes
@@ -205,21 +203,22 @@ module.exports = function(app) {
         _nodes = req.body.nodes;
         
         for (var key in _nodes) {
-            _nodes[key].classes = {};    
+            node = _nodes[key]
+            node.classes = {};
+            nodes[node.id] = node
         }
-        nodes = _nodes;
 
         res.send({status: "ok"});
     });
 
-    // store a node by your ID
+     // store a node by your ID
     // this command replace the previous node
     app.post('/node/:nodeid', function(req, res) {
         nodeid = req.params.nodeid;
         node = req.body.node;
         node.classes = {};
 
-        nodes[nodeid] = node;
+        nodes[node.id] = node;
 
         res.send({status: "ok"});
     });
@@ -227,9 +226,9 @@ module.exports = function(app) {
     // store a node command
     // this command replace the previous node command
     app.post('/node/:nodeid/command/:command', function(req, res) {
-        nodeid = req.params.nodeid;
         command = req.params.command;
         value = req.body.value;
+        nodeid = value.node_id;
 
         if (nodes[nodeid]) {
             if (!nodes[nodeid].classes[command]) {
