@@ -39,10 +39,12 @@ module.exports = function(app) {
         res.send(result);
     });
 
+    // to implements
     app.get('/reset', function(req, res) {
-        nodes = []
+        
     });
 
+    // list all nodes
     app.get('/nodes', function(req, res) {
         var result = [];
 
@@ -61,12 +63,14 @@ module.exports = function(app) {
         res.send(result);
     });
 
+    // get the number of nodes
     app.get('/nodes/length', function(req, res) {
         res.send({
             length: nodes.length
         });
     });
 
+    // get the node info by your ID
     app.get('/node/:nodeid', function(req, res) {
         nodeid = req.params.nodeid;
         if (nodes[nodeid]) {
@@ -84,6 +88,7 @@ module.exports = function(app) {
         }
     });
 
+    // get the node status commands
     app.get('/node/:nodeid/status', function(req, res) {
         nodeid = req.params.nodeid;
         if (nodes[nodeid]) {
@@ -103,6 +108,7 @@ module.exports = function(app) {
         }
     });
 
+    // get a node status command
     app.get('/node/:nodeid/status/:status', function(req, res) {
         nodeid = req.params.nodeid;
         status = req.params.status;
@@ -119,6 +125,7 @@ module.exports = function(app) {
         }
     });
 
+    // get a node status of a command
     app.get('/node/:nodeid/status/:status/:index', function(req, res) {
         nodeid = req.params.nodeid;
         status = req.params.status;
@@ -134,6 +141,7 @@ module.exports = function(app) {
         }
     });
 
+    // rename a node
     app.get('/node/:nodeid/rename/:name', function(req, res) {
         commands.push({
             type: 'rename',
@@ -143,7 +151,8 @@ module.exports = function(app) {
         res.send({result:"stored"});
     });
 
-    // change to post
+    // TODO change to post
+    // send a command
     app.get('/node/:nodeid/command/:command/:index/:instance/:value', function(req, res) {
         if (value == 'false') {
             value = false;
@@ -165,20 +174,25 @@ module.exports = function(app) {
         res.send({result:"stored"});
     });
 
+    // list all commands stored to be executed
     app.get('/commands', function(req, res) {
         res.send(commands);
     });
 
+    // list all commands stored to be executed and clear all
     app.get('/commands/read', function(req, res) {
         res.send(commands);
         commands = [];
     });
 
+    // clear the node list (only server)
     app.post('/node/clear', function(req, res) {
         nodes = [];
         res.send({status: "ok"});
     });
 
+    // store all nodes.
+    // this command replace the previous nodes
     app.post('/node/all', function(req, res) {
         nodeid = req.params.nodeid;
         _nodes = req.body.nodes;
@@ -191,6 +205,8 @@ module.exports = function(app) {
         res.send({status: "ok"});
     });
 
+    // store a node by your ID
+    // this command replace the previous node
     app.post('/node/:nodeid', function(req, res) {
         nodeid = req.params.nodeid;
         node = req.body.node;
@@ -201,6 +217,8 @@ module.exports = function(app) {
         res.send({status: "ok"});
     });
 
+    // store a node command
+    // this command replace the previous node command
     app.post('/node/:nodeid/command/:command', function(req, res) {
         nodeid = req.params.nodeid;
         command = req.params.command;
