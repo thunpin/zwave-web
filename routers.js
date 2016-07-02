@@ -27,15 +27,22 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
     app.get('/', function(req, res) {
-        var result = '/reset <br> -- TODO';
-        result += '/nodes <br> -- list all nodes';
-        result += '/nodes/length <br> -- list the number of nodes';
-        result += '/node/:nodeid <br> -- get node info by ID';
-        result += '/node/:nodeid/status <br> -- get all node status commands';
-        result += '/node/:nodeid/status/:status <br> -- get a node status command';
-        result += '/node/:nodeid/status/:status/:index <br> -- get a node status command info';
-        result += '/node/:nodeid/rename/:name <br> -- rename a node [TODO must be implemented in cliente side]';
-        result += '/node/:nodeid/command/:command/:index/:instance/:value <br> -- execute a command';
+        var result = '-- list all nodes<br>';
+        result += '<b>/nodes</b> <br><br>';
+        result += '-- list the number of nodes <br>';
+        result += '<b>/nodes/length</b> <br><br>';
+        result += '-- get node info by ID <br>';
+        result += '<b>/node/:nodeid</b> <br><br>';
+        result += '-- get all node status commands <br>';
+        result += '<b>/node/:nodeid/status</b> <br><br>';
+        result += '-- get a node status command <br>';
+        result += '<b>/node/:nodeid/status/:status</b> <br><br>';
+        result += '-- get a node status command info <br>'
+        result += '<b>/node/:nodeid/status/:status/:index</b> <br><br>';
+        result += '-- rename a node [must be implemented in cliente side] <br>';
+        result += '<b>/node/:nodeid/rename/:name</b> <br><br>';
+        result += '-- execute a command <br>';
+        result += '<b>/node/:nodeid/command/:command/:index/:instance/:value</b>';
         res.send(result);
     });
 
