@@ -27,15 +27,15 @@ module.exports = function(app) {
     app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
     app.get('/', function(req, res) {
-        var result = '/reset <br>';
-        result += '/nodes <br>';
-        result += '/nodes/length <br>';
-        result += '/node/:nodeid <br>';
-        result += '/node/:nodeid/status <br>';
-        result += '/node/:nodeid/status/:status <br>';
-        result += '/node/:nodeid/status/:status/:index <br>';
-        result += '/node/:nodeid/rename/:name <br>';
-        result += '/node/:nodeid/command/:command/:index/:instance/:value <br>';
+        var result = '/reset <br> -- TODO';
+        result += '/nodes <br> -- list all nodes';
+        result += '/nodes/length <br> -- list the number of nodes';
+        result += '/node/:nodeid <br> -- get node info by ID';
+        result += '/node/:nodeid/status <br> -- get all node status commands';
+        result += '/node/:nodeid/status/:status <br> -- get a node status command';
+        result += '/node/:nodeid/status/:status/:index <br> -- get a node status command info';
+        result += '/node/:nodeid/rename/:name <br> -- rename a node [TODO must be implemented in cliente side]';
+        result += '/node/:nodeid/command/:command/:index/:instance/:value <br> -- execute a command';
         res.send(result);
     });
 
